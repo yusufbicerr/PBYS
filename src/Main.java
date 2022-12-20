@@ -24,6 +24,8 @@ public class Main {
                 data.Oncelik = Integer.parseInt(values[1]);
                 data.ProcessZamani = Integer.parseInt(values[2]);
 
+                Process process = new Process(data.VarisZamani,data.Oncelik,data.ProcessZamani);
+
 
             }
 
