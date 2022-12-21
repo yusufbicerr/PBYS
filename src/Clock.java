@@ -1,3 +1,4 @@
+import java.util.concurrent.TimeUnit;
 public class Clock {
     private int timer;
 
@@ -5,7 +6,8 @@ public class Clock {
         timer = 0;
     }
 
-    public void TimeArtsin(){
+    public void TimeArtsin() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
         timer++;
     }
 
