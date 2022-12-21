@@ -11,6 +11,7 @@ public class Clock {
         timer++;
     }
 
+
     public int getTime(){
         return timer;
     }
