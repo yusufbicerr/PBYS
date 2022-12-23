@@ -39,6 +39,7 @@ public class Main {
                 //System.out.println(processQueue.peek().getProcessZamani());
                 //processQueue.remove();
             }
+
             Dispatcher dispatcher = new Dispatcher();
             dispatcher.OncelikliKuyrugaTasi(processQueue);
 
