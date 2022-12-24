@@ -1,5 +1,7 @@
 public class Data {
     public int VarisZamani;
+
+    public int id;
     public int Oncelik;
     public int ProcessZamani;
 
@@ -12,4 +14,5 @@ public class Data {
     public int getProcessZamani(){
         return  ProcessZamani;
     }
+    public int getid(){return id;}
 }

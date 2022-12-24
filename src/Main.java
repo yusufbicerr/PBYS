@@ -8,6 +8,9 @@ import java.util.Queue;
 
 
 public class Main {
+    public static int sure=0;
+    public static int idver=0;
+
     public static void main(String[] args) throws IOException{
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("giris.txt"))) {
@@ -26,14 +29,16 @@ public class Main {
                 line = line.replaceAll(" ","");
 
                 String[] values = line.split(specialCharacter);
-
+                data.id=idver;
+                idver++;
                 data.VarisZamani = Integer.parseInt(values[0]);
                 data.Oncelik = Integer.parseInt(values[1]);
                 data.ProcessZamani = Integer.parseInt(values[2]);
 
-                Process process = new Process(data.VarisZamani,data.Oncelik,data.ProcessZamani);
-
+                Process process = new Process(data.id,data.VarisZamani,data.Oncelik,data.ProcessZamani);
+                sure = process.getProcessZamani() +sure;
                 processQueue.add(process);
+
                 //System.out.print(processQueue.peek().getVarisZamani()+" ");
                 //System.out.print(processQueue.peek().getOncelik()+" ");
                 //System.out.println(processQueue.peek().getProcessZamani());
@@ -41,7 +46,7 @@ public class Main {
             }
 
             Dispatcher dispatcher = new Dispatcher();
-            dispatcher.OncelikliKuyrugaTasi(processQueue);
+            dispatcher.OncelikliKuyrugaTasi(processQueue,sure);
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
