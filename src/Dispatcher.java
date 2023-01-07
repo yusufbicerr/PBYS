@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 
 public class Dispatcher {
     Clock clock = new Clock();
@@ -14,10 +16,21 @@ public class Dispatcher {
     int patlamaZamani = 0;
     public void basla(Queue<Process> processQueue)
     {
+        ArrayList<String> renkler = new ArrayList();
+        renkler.add("\u001B[35m");
+        renkler.add("\u001B[30m");
+        renkler.add("\u001B[31m");
+        renkler.add("\u001B[32m");
+        renkler.add("\u001B[33m");
+        renkler.add("\u001B[34m");
+        renkler.add("\u001B[35m");
+        renkler.add("\u001B[36m");
+        renkler.add("\u001B[37m");
+        Random rnd = new Random();
            if(sayac==0)
            {
                //TimeoutKontrol(processQueue);
-               System.out.println("Saniye: " + clock.getTime() + " PROSES BASLADI"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
+               System.out.println(renkler.get(rnd.nextInt(renkler.size()-1))+"Saniye: " + clock.getTime() + " PROSES BASLADI"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
                processQueue.peek().setProcessZamani(processQueue.peek().getProcessZamani()-1);
                processQueue.peek().setProcessIsWorking(1);
                 sayac=1;
