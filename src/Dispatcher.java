@@ -29,36 +29,27 @@ public class Dispatcher {
         Random rnd = new Random();
            if(sayac==0)
            {
-               //TimeoutKontrol(processQueue);
+
                System.out.println(renkler.get(rnd.nextInt(renkler.size()-1))+"Saniye: " + clock.getTime() + " PROSES BASLADI"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
                processQueue.peek().setProcessZamani(processQueue.peek().getProcessZamani()-1);
                processQueue.peek().setProcessIsWorking(1);
                 sayac=1;
            }
            else if (processQueue.peek() != null){
-
-            //System.out.println("Saniye: " + clock.getTime() + "BASLADI"+processQueue.peek().getProcessZamani());
             if(processQueue.peek().getProcessZamani() != 0){
                 TimeoutKontrol(processQueue);
-                //System.out.println("Saniye: " + clock.getTime() + " PROSES CALISIYOR"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
+
                 if (processQueue.peek().getProcessZamani() != 0){
                     System.out.println("Saniye: " + clock.getTime() + " PROSES CALISIYOR"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
                     processQueue.peek().setProcessZamani(processQueue.peek().getProcessZamani()-1);
                 }
-
-
-
-                //System.out.print(priority0.peek().getVarisZamani() + " ");
             }
             else if(processQueue.peek().getProcessZamani() == 0)
             {
                 TimeoutKontrol(processQueue);
                 System.out.println("Saniye: " + clock.getTime() + " PROSES BITTI"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
-
                 processQueue.remove();
                 sayac=0;
-                //System.out.println("Saniye: " + clock.getTime() + "BASLADI"+processQueue.peek().getProcessZamani());
-                //basla(processQueue);
                 if(priority0.peek()==null)
                 {
                     if(priority1.peek()==null)
@@ -67,7 +58,7 @@ public class Dispatcher {
                         {
                             if(priority3.peek()==null)
                             {
-                                System.out.println("bittim kardes");
+                                System.out.println("TAMAMLANDI");
                                 if(priority4.peek()==null)
                                 {
 
@@ -174,7 +165,7 @@ public class Dispatcher {
     public void OncelikliKuyrugaTasi(Queue<Process> queue,int sure) throws InterruptedException {
 
         while (sure!=-1) {
-            //System.out.println(priority0.size()+""+ priority1.size()+""+ priority2.size()+""+ priority3.size());
+
             if(queue.size()!=0)
             {
                 if (clock.getTime() != queue.peek().getVarisZamani()) {
@@ -187,7 +178,7 @@ public class Dispatcher {
                             {
                                 if(priority3.peek()==null)
                                 {
-                                    System.out.println("bittim kardes");
+                                    System.out.println("Tamamlandı");
                                     if(priority4.peek()==null)
                                     {
 
@@ -228,9 +219,6 @@ public class Dispatcher {
 
                     if (queue.peek().getOncelik() == 0)
                     {
-                        //priority0.add(queue.peek());
-
-
 
                         priority0.add(new Process(queue.peek().getid(),queue.peek().getVarisZamani(),queue.peek().getOncelik(),queue.peek().getProcessZamani(),0));
                         queue.remove();
@@ -304,9 +292,6 @@ public class Dispatcher {
                 clock.TimeArtsin();
                 sure--;
             }
-            //System.out.println(priority0.size());
-
-
 
         }
 

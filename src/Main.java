@@ -39,10 +39,6 @@ public class Main {
                 sure = process.getProcessZamani() +sure;
                 processQueue.add(process);
 
-                //System.out.print(processQueue.peek().getVarisZamani()+" ");
-                //System.out.print(processQueue.peek().getOncelik()+" ");
-                //System.out.println(processQueue.peek().getProcessZamani());
-                //processQueue.remove();
             }
 
             Dispatcher dispatcher = new Dispatcher();
