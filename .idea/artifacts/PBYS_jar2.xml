@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PBYS:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/PBYS_jar2</output-path>
+    <root id="archive" name="PBYS.jar">
+      <element id="module-output" name="PBYS" />
+    </root>
+  </artifact>
+</component>

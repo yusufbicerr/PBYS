@@ -14,6 +14,7 @@ public class Dispatcher {
 
     int sayac=0;
     int patlamaZamani = 0;
+    public static final String ANSI_RESET = "\u001B[0m";
     public void basla(Queue<Process> processQueue)
     {
         ArrayList<String> renkler = new ArrayList();
@@ -29,8 +30,8 @@ public class Dispatcher {
         Random rnd = new Random();
            if(sayac==0)
            {
-
-               System.out.println(renkler.get(rnd.nextInt(renkler.size()-1))+"Saniye: " + clock.getTime() + " PROSES BASLADI"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
+        	   System.out.println(ANSI_RESET+" "+ "Saniye: " + clock.getTime() + " PROSES BASLADI"+" ID:"+processQueue.peek().getid()+" ONCELIK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
+               System.out.println(renkler.get(rnd.nextInt(renkler.size()-1))+" "+ "Saniye: " + clock.getTime() + " PROSES BASLADI"+" ID:"+processQueue.peek().getid()+" ONCELIK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
                processQueue.peek().setProcessZamani(processQueue.peek().getProcessZamani()-1);
                processQueue.peek().setProcessIsWorking(1);
                 sayac=1;
@@ -40,7 +41,7 @@ public class Dispatcher {
                 TimeoutKontrol(processQueue);
 
                 if (processQueue.peek().getProcessZamani() != 0){
-                    System.out.println("Saniye: " + clock.getTime() + " PROSES CALISIYOR"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
+                    System.out.println("Saniye: " + clock.getTime() + " PROSES CALISIYOR"+" ID:"+processQueue.peek().getid()+" ONCELIK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
                     processQueue.peek().setProcessZamani(processQueue.peek().getProcessZamani()-1);
                 }
             }
@@ -97,13 +98,13 @@ public class Dispatcher {
             if (priority1.peek() != null){
                 if(priority1.peek().getProcessIsWorking() == 1){
                     if(priority1.peek().getTimeout() == 0){
-                        System.out.println("Saniye: " + clock.getTime() + " PROSES ASKIDA"+" ID:"+priority1.peek().getid()+" ONCELİK:"+priority1.peek().getOncelik()+" KALAN SURE:"+priority1.peek().getProcessZamani());
-                        System.out.println("Saniye: " + clock.getTime() + " PROSES BAŞLADI"+" ID:"+processQueue.peek().getid()+" ONCELİK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
+                        System.out.println("Saniye: " + clock.getTime() + " PROSES ASKIDA"+" ID:"+priority1.peek().getid()+" ONCELIK:"+priority1.peek().getOncelik()+" KALAN SURE:"+priority1.peek().getProcessZamani());
+                        System.out.println("Saniye: " + clock.getTime() + " PROSES BASLADI"+" ID:"+processQueue.peek().getid()+" ONCELIK:"+processQueue.peek().getOncelik()+" KALAN SURE:"+processQueue.peek().getProcessZamani());
                         processQueue.peek().setProcessZamani(processQueue.peek().getProcessZamani()-1);
                     }
                     priority1.peek().setTimeout(priority1.peek().getTimeout() + 1);
                     if (priority1.peek().getTimeout() == 21){
-                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority1.peek().getid()+" ONCELİK:" +
+                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority1.peek().getid()+" ONCELIK:" +
                                 priority1.peek().getOncelik() + " KALAN SURE:" + priority1.peek().getProcessZamani());
                         priority1.remove();
                     }
@@ -111,7 +112,7 @@ public class Dispatcher {
                 else if (priority2.peek().getProcessIsWorking() == 1){
                     priority2.peek().setTimeout(priority2.peek().getTimeout() + 1);
                     if (priority2.peek().getTimeout() == 21){
-                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority2.peek().getid()+" ONCELİK:" +
+                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority2.peek().getid()+" ONCELIK:" +
                                 priority2.peek().getOncelik() + " KALAN SURE:" + priority2.peek().getProcessZamani());
                         priority2.remove();
                     }
@@ -119,7 +120,7 @@ public class Dispatcher {
                 else if (priority3.peek().getProcessIsWorking() == 1){
                     priority3.peek().setTimeout(priority3.peek().getTimeout() + 1);
                     if (priority3.peek().getTimeout() == 21){
-                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority3.peek().getid()+" ONCELİK:" +
+                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority3.peek().getid()+" ONCELIK:" +
                                 priority3.peek().getOncelik() + " KALAN SURE:" + priority3.peek().getProcessZamani());
                         priority3.remove();
                     }
@@ -132,7 +133,7 @@ public class Dispatcher {
                 if(priority2.peek().getProcessIsWorking() == 1){
                     priority2.peek().setTimeout(priority2.peek().getTimeout() + 1);
                     if (priority2.peek().getTimeout() == 21){
-                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority2.peek().getid()+" ONCELİK:" +
+                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority2.peek().getid()+" ONCELIK:" +
                                 priority2.peek().getOncelik() + " KALAN SURE:" + priority2.peek().getProcessZamani());
                         priority2.remove();
                     }
@@ -140,7 +141,7 @@ public class Dispatcher {
                 else if (priority3.peek().getProcessIsWorking() == 1){
                     priority3.peek().setTimeout(priority3.peek().getTimeout() + 1);
                     if (priority3.peek().getTimeout() == 21){
-                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority3.peek().getid()+" ONCELİK:" +
+                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI "+" ID:"+priority3.peek().getid()+" ONCELIK:" +
                                 priority3.peek().getOncelik() + " KALAN SURE:" + priority3.peek().getProcessZamani());
                         priority3.remove();
                     }
@@ -152,7 +153,7 @@ public class Dispatcher {
                 if (priority3.peek().getProcessIsWorking() == 1) {
                     priority3.peek().setTimeout(priority3.peek().getTimeout() + 1);
                     if (priority3.peek().getTimeout() == 21) {
-                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI " + " ID:" + priority3.peek().getid() + " ONCELİK:" +
+                        System.out.println("Saniye: " + clock.getTime() + " PROCESES ZAMAN ASIMI " + " ID:" + priority3.peek().getid() + " ONCELIK:" +
                                 priority3.peek().getOncelik() + " KALAN SURE:" + priority3.peek().getProcessZamani());
                         priority3.remove();
                     }
@@ -178,7 +179,7 @@ public class Dispatcher {
                             {
                                 if(priority3.peek()==null)
                                 {
-                                    System.out.println("Tamamlandı");
+                                    System.out.println("TamamlandÄ±");
                                     if(priority4.peek()==null)
                                     {
 
